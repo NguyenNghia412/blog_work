@@ -21,7 +21,7 @@
 title: Phanora
 email: nghiant9608@gmail.com
 # baseurl: "" # the subpath of your site, e.g. /blog
-url: "blog_work" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://nguyennghia412.github.io/blog_work/" # the base hostname & protocol for your site, e.g. http://example.com
 github_username:  NguyenNghia412
 
 # Build settings
