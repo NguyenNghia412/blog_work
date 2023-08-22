@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-08-22T11:45:20+07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Phanora</title><entry><title type="html">Cách mở IIS trên Windows Server</title><link href="http://localhost:4000/docs/windows/iis/2023/08/22/open-iis.html" rel="alternate" type="text/html" title="Cách mở IIS trên Windows Server" /><published>2023-08-22T00:00:00+07:00</published><updated>2023-08-22T00:00:00+07:00</updated><id>http://localhost:4000/docs/windows/iis/2023/08/22/open-iis</id><content type="html" xml:base="http://localhost:4000/docs/windows/iis/2023/08/22/open-iis.html"><![CDATA[<h2 id="cách-1-mở-bằng-run">Cách 1: Mở bằng Run</h2>
+<ol>
+  <li>Ấn <strong>Windows + R</strong></li>
+  <li>Gõ <strong>InetMgr.exe</strong></li>
+</ol>]]></content><author><name></name></author><category term="docs" /><category term="Windows" /><category term="IIS" /><summary type="html"><![CDATA[Cách 1: Mở bằng Run Ấn Windows + R Gõ InetMgr.exe]]></summary></entry><entry><title type="html">Cài nfs trên centos7</title><link href="http://localhost:4000/docs/linux/centos/nfs/2022/08/17/install-nfs.html" rel="alternate" type="text/html" title="Cài nfs trên centos7" /><published>2022-08-17T00:00:00+07:00</published><updated>2022-08-17T00:00:00+07:00</updated><id>http://localhost:4000/docs/linux/centos/nfs/2022/08/17/install-nfs</id><content type="html" xml:base="http://localhost:4000/docs/linux/centos/nfs/2022/08/17/install-nfs.html"><![CDATA[<h2 id="setup-nfs-server">Setup nfs server</h2>
+<h3 id="installing-nfs-utils">Installing nfs-utils</h3>
+<p>yum install nfs-utils</p>
+
+<h3 id="choose-the-directory-to-share-if-not-present-create-one">Choose the directory to share. If not present create one.</h3>
+<p>mkdir /var/nfs_share_dir</p>
+
+<h3 id="add-permissions-and-ownwership-privilages-to-the-shared-directory">Add permissions and ownwership privilages to the shared directory.</h3>
+<p>chmod -R 755 /var/nfs_share_dir
+chown nfsnobody:nfsnobody /var/nfs_share_dir</p>
+
+<h3 id="start-the-nfs-services">Start the nfs services.</h3>
+<p>systemctl enable rpcbind
+systemctl enable nfs-server
+systemctl enable nfs-lock
+systemctl enable nfs-idmap
+systemctl start rpcbind
+systemctl start nfs-server
+systemctl start nfs-lock
+systemctl start nfs-idmap</p>
+
+<h3 id="configuring-the-exports-file-for-sharing">Configuring the exports file for sharing.</h3>
+<p>vi /etc/exports
+/var/nfs_share_dir    192.168.48.101(rw,sync,no_root_squash)
+/var/nfs_share_dir    *(rw,sync,no_root_squash)</p>
+
+<h3 id="restart-the-service">Restart the service</h3>
+<p>systemctl restart nfs-server</p>
+
+<h3 id="only-for-centos-7nfs-service-override">Only for Centos 7,NFS service override</h3>
+<p>firewall-cmd –permanent –zone=public –add-service=nfs
+firewall-cmd –permanent –zone=public –add-service=mountd
+firewall-cmd –permanent –zone=public –add-service=rpc-bind
+firewall-cmd –reload</p>
+
+<h2 id="setup-nfs-client">Setup nfs client</h2>
+
+<p>–====================================================
+Nếu lỗi ở client ko mount được, thì fix như sau ở nfs server</p>
+<h1 id="cat-etcexports">cat /etc/exports</h1>
+<p>/home/export *(rw,sync,no_root_squash,insecure)</p>
+<h1 id="exportfs--rav">exportfs -rav</h1>]]></content><author><name></name></author><category term="docs" /><category term="Linux" /><category term="CentOS" /><category term="nfs" /><summary type="html"><![CDATA[Setup nfs server Installing nfs-utils yum install nfs-utils]]></summary></entry><entry><title type="html">Cấu hình jenkins + gitlab centos7</title><link href="http://localhost:4000/docs/linux/centos/jenkins/gitlab/2022/07/20/install-jenkins-gitlab.html" rel="alternate" type="text/html" title="Cấu hình jenkins + gitlab centos7" /><published>2022-07-20T00:00:00+07:00</published><updated>2022-07-20T00:00:00+07:00</updated><id>http://localhost:4000/docs/linux/centos/jenkins/gitlab/2022/07/20/install-jenkins-gitlab</id><content type="html" xml:base="http://localhost:4000/docs/linux/centos/jenkins/gitlab/2022/07/20/install-jenkins-gitlab.html"><![CDATA[<h2 id="trên-server-cài-git">Trên server, cài git</h2>
+<p>yum install git</p>
+
+<h2 id="cài-plugin-gitlab">Cài plugin gitlab</h2>
+<p>Manage Jenkins &gt; Manage Plugins &gt; Available &gt; Gõ Gitlab &gt; Install</p>
+
+<h2 id="gán-gitlab-api-token-cho-jenkins">Gán Gitlab api token cho Jenkins</h2>
+
+<h3 id="gitlab">Gitlab</h3>
+<p>Đăng nhập vào gitlab</p>
+
+<p>Avatar &gt; Edit profile &gt; Access Token</p>
+<h4 id="tại-đây-tạo-access-token">Tại đây, tạo access token</h4>
+<p>Đặt Token name, chọn scope (Tích hết), ấn Create personal access token</p>
+
+<h3 id="jenkins">Jenkins</h3>
+<p>Manage Jenkins &gt; Manage Credentials &gt; System &gt; Global credentials (unrestricted)</p>
+
+<p>Chọn Gitlab api access token, rồi copy access token của gitlab vào đây</p>
+
+<h2 id="cấu-hình-gitlab-connections">Cấu hình Gitlab connections</h2>
+<p>Manage Jenkins &gt; Configure System &gt; Gitlab connections</p>
+
+<p>Connection name = gitlab-epic-staging
+Gitlab host URL = https://gitlab.com
+Credentials = Gitlab api token vừa tạo</p>
+
+<p>Sau đó, ấn Test Connetion =&gt; Success là okie</p>
+
+<h2 id="tạo-credentials-ssh-user-with-private-key">Tạo Credentials SSH user with private key</h2>
+
+<h3 id="tạo-ssh-rsa-key-pair-tạo-ở-đâu-cũng-được-windows-or-linux-đều-được">Tạo SSH RSA key pair (Tạo ở đâu cũng được: Windows or Linux đều được)</h3>
+<p>ssh-keygen -b 2048 -t rsa</p>
+
+<h3 id="gitlab-1">Gitlab</h3>
+<p>Avatar &gt; Edit Profile &gt; SSH Keys
+Copy key trong file public cho vào đây</p>
+
+<h3 id="jenkins-1">Jenkins</h3>
+<p>Manage Jenkins &gt; Manage Credentials &gt; System &gt; Global credentials (unrestricted)</p>
+
+<p>Chọn SSH Username with private key &gt; Copy key trong file private cho vào đây</p>
+
+<h2 id="tạo-project-trên-jenkins">Tạo project trên jenkins</h2>
+<p>New Item &gt; Nhập tên &gt; Chọn Freestyle project</p>
+
+<h3 id="tại-source-code-management-chọn-git">Tại Source Code Management, chọn Git</h3>
+<p>Repository URL = Link ssh
+Credentials = Credentials tạo bên trên
+Branch Specifier (blank for ‘any’) = */staging (Nhập tên nhánh muốn build)</p>
+
+<h3 id="tại-build-triggers">Tại Build Triggers</h3>
+<p>Chọn Build when a change is pushed to GitLab</p>
+
+<h3 id="tại-build-nếu-muốn-làm-gì-đó-sau-khi-pull-code-từ-nhánh">Tại Build (Nếu muốn làm gì đó sau khi pull code từ nhánh)</h3>
+<p>Chọn Execute shell</p>]]></content><author><name></name></author><category term="docs" /><category term="Linux" /><category term="Centos" /><category term="Jenkins" /><category term="Gitlab" /><summary type="html"><![CDATA[Trên server, cài git yum install git]]></summary></entry><entry><title type="html">Cài jenkins trên centos7</title><link href="http://localhost:4000/docs/linux/centos/jenkins/2022/07/20/install-jenkins.html" rel="alternate" type="text/html" title="Cài jenkins trên centos7" /><published>2022-07-20T00:00:00+07:00</published><updated>2022-07-20T00:00:00+07:00</updated><id>http://localhost:4000/docs/linux/centos/jenkins/2022/07/20/install-jenkins</id><content type="html" xml:base="http://localhost:4000/docs/linux/centos/jenkins/2022/07/20/install-jenkins.html"><![CDATA[<h3 id="install-jdk">Install jdk</h3>
+<p><code class="language-plaintext highlighter-rouge">yum install java-1.8.0-openjdk-devel</code></p>
+
+<h3 id="enable-repo-jenkins">Enable repo jenkins</h3>
+<p><code class="language-plaintext highlighter-rouge">curl --silent --location http://pkg.jenkins-ci.org/redhat-stable/jenkins.repo | sudo tee /etc/yum.repos.d/jenkins.repo</code></p>
+
+<h3 id="add-repo-to-sytem">Add repo to sytem</h3>
+<p><code class="language-plaintext highlighter-rouge">rpm --import https://jenkins-ci.org/redhat/jenkins-ci.org.key =&gt; Ver cũ</code></p>
+
+<p><code class="language-plaintext highlighter-rouge">sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key =&gt; 2023</code></p>
+
+<h3 id="install-latest-stable-version">Install latest stable version</h3>
+<p><code class="language-plaintext highlighter-rouge">yum install jenkins -y</code></p>
+
+<p><code class="language-plaintext highlighter-rouge">systemctl start jenkins</code></p>
+
+<p><code class="language-plaintext highlighter-rouge">systemctl enable jenkins</code></p>
+
+<p><code class="language-plaintext highlighter-rouge">systemctl status jenkins</code></p>
+
+<h3 id="nếu-có-semanage-thì-chạy-lệnh-ko-có-thì-thoai">Nếu có semanage thì chạy lệnh (Ko có thì thoai)</h3>
+<p><code class="language-plaintext highlighter-rouge">sudo semanage port -a -t http_port_t  -p tcp 8080</code></p>
+
+<h3 id="mở-port-của-firewall-jenkins-chạy-cổng-mặc-định-là-8080">Mở port của firewall (Jenkins chạy cổng mặc định là 8080)</h3>
+<p><code class="language-plaintext highlighter-rouge">firewall-cmd --permanent --zone=public --add-port=8080/tcp</code></p>
+
+<p><code class="language-plaintext highlighter-rouge">firewall-cmd --reload</code></p>
+
+<p><code class="language-plaintext highlighter-rouge">firewall-cmd --permanent --zone=public --list-ports</code></p>
+
+<h3 id="các-bước-cuối">Các bước cuối</h3>
+<ol>
+  <li>
+    <p>Truy cập <a href="http://localhost:8008">đường dẫn</a></p>
+  </li>
+  <li>
+    <p>Lấy default administrator password</p>
+
+    <p><code class="language-plaintext highlighter-rouge">cat /var/lib/jenkins/secrets/initialAdminPassword</code></p>
+  </li>
+  <li>
+    <p>Xong là ấn cài các kiểu trên WEB GUI</p>
+  </li>
+</ol>
+
+<h3 id="create-first-admin-user">Create First Admin User</h3>
+<p>admin/agalkjvlas</p>]]></content><author><name></name></author><category term="docs" /><category term="Linux" /><category term="Centos" /><category term="Jenkins" /><summary type="html"><![CDATA[Install jdk yum install java-1.8.0-openjdk-devel]]></summary></entry><entry><title type="html">Một vài lệnh linux trên centos7</title><link href="http://localhost:4000/docs/linux/centos/2022/06/03/centos-command.html" rel="alternate" type="text/html" title="Một vài lệnh linux trên centos7" /><published>2022-06-03T00:00:00+07:00</published><updated>2022-06-03T00:00:00+07:00</updated><id>http://localhost:4000/docs/linux/centos/2022/06/03/centos-command</id><content type="html" xml:base="http://localhost:4000/docs/linux/centos/2022/06/03/centos-command.html"><![CDATA[<h2 id="tim-thu-muc-khi-biet-ten-file">Tim thu muc khi biet ten file</h2>
+<p>find / -name <ten-file>
+find / -name deploy.sh</ten-file></p>
+<h2 id="remove-all--images">Remove all <none> images</none></h2>
+<p>docker images  | grep ‘<none>' | awk '{print $3}' | xargs  docker image rm -f {}</none></p>
+<h2 id="nginx-port-denied">Nginx port denied</h2>
+<p>If you use a port bigger than 1024 with root privilege, but still got this problem, that’s may be caused by SELinux:</p>
+
+<p>Check this port, say 8024, in segange port</p>
+<h3 id="show">Show</h3>
+<p>sudo semanage port -l | grep http_port_t</p>
+
+<p>If 8024 doesn’t exist in the port list, add it into segange port</p>
+<h3 id="add">Add</h3>
+<p>sudo semanage port -a -t http_port_t  -p tcp 8024</p>
+
+<h2 id="extract">Extract</h2>
+<p>tar -xzvf node_exporter-1.3.1.linux-amd64.tar.gz</p>
+
+<h2 id="chọn-fish-làm-default-shell">Chọn fish làm default shell</h2>
+<p>chsh -s $(which fish)</p>
+
+<h2 id="list-file-by-date">list file by date</h2>
+<p>ls -lt</p>
+
+<h2 id="update-package">update package</h2>
+<h3 id="centos-7">Centos 7</h3>
+<p>yum -y update</p>
+
+<h2 id="install-wget">install wget</h2>
+<h3 id="centos-7-1">Centos 7</h3>
+<p>yum install wget</p>
+
+<h2 id="install-net-tools">install net-tools</h2>
+<h3 id="centos-7-2">Centos 7</h3>
+<p>yum install net-tools</p>
+
+<p>yum install psmisc</p>]]></content><author><name></name></author><category term="docs" /><category term="Linux" /><category term="Centos" /><summary type="html"><![CDATA[Tim thu muc khi biet ten file find / -name find / -name deploy.sh Remove all images docker images | grep ‘' | awk '{print $3}' | xargs docker image rm -f {} Nginx port denied If you use a port bigger than 1024 with root privilege, but still got this problem, that’s may be caused by SELinux:]]></summary></entry></feed>

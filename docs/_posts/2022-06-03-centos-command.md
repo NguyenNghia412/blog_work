@@ -2,7 +2,7 @@
 layout: post
 title:  "Một vài lệnh linux trên centos7"
 date:   2022-06-03
-categories: Khong biet
+categories: [Linux, Centos]
 ---
 ## Tim thu muc khi biet ten file
 find / -name <ten-file>

@@ -2,7 +2,7 @@
 layout: post
 title:  "Cấu hình jenkins + gitlab centos7"
 date:   2022-07-20
-categories: Khong biet
+categories: [Linux, Centos, Jenkins, Gitlab]
 ---
 ## Trên server, cài git
 yum install git

@@ -2,7 +2,7 @@
 layout: post
 title:  "Cài jenkins trên centos7"
 date:   2022-07-20
-categories: Khong biet
+categories: [Linux, Centos, Jenkins]
 ---
 ### Install jdk
 `yum install java-1.8.0-openjdk-devel`

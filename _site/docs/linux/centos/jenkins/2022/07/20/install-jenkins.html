@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Cài jenkins trên centos7 | Phanora</title>
+<meta name="generator" content="Jekyll v4.3.2" />
+<meta property="og:title" content="Cài jenkins trên centos7" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Install jdk yum install java-1.8.0-openjdk-devel" />
+<meta property="og:description" content="Install jdk yum install java-1.8.0-openjdk-devel" />
+<link rel="canonical" href="http://localhost:4000/docs/linux/centos/jenkins/2022/07/20/install-jenkins.html" />
+<meta property="og:url" content="http://localhost:4000/docs/linux/centos/jenkins/2022/07/20/install-jenkins.html" />
+<meta property="og:site_name" content="Phanora" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-07-20T00:00:00+07:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Cài jenkins trên centos7" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2022-07-20T00:00:00+07:00","datePublished":"2022-07-20T00:00:00+07:00","description":"Install jdk yum install java-1.8.0-openjdk-devel","headline":"Cài jenkins trên centos7","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/docs/linux/centos/jenkins/2022/07/20/install-jenkins.html"},"url":"http://localhost:4000/docs/linux/centos/jenkins/2022/07/20/install-jenkins.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Phanora" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Phanora</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a><a class="page-link" href="/categories/">Thể loại</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Cài jenkins trên centos7</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2022-07-20T00:00:00+07:00" itemprop="datePublished">Jul 20, 2022
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <h3 id="install-jdk">Install jdk</h3>
+<p><code class="language-plaintext highlighter-rouge">yum install java-1.8.0-openjdk-devel</code></p>
+
+<h3 id="enable-repo-jenkins">Enable repo jenkins</h3>
+<p><code class="language-plaintext highlighter-rouge">curl --silent --location http://pkg.jenkins-ci.org/redhat-stable/jenkins.repo | sudo tee /etc/yum.repos.d/jenkins.repo</code></p>
+
+<h3 id="add-repo-to-sytem">Add repo to sytem</h3>
+<p><code class="language-plaintext highlighter-rouge">rpm --import https://jenkins-ci.org/redhat/jenkins-ci.org.key =&gt; Ver cũ</code></p>
+
+<p><code class="language-plaintext highlighter-rouge">sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key =&gt; 2023</code></p>
+
+<h3 id="install-latest-stable-version">Install latest stable version</h3>
+<p><code class="language-plaintext highlighter-rouge">yum install jenkins -y</code></p>
+
+<p><code class="language-plaintext highlighter-rouge">systemctl start jenkins</code></p>
+
+<p><code class="language-plaintext highlighter-rouge">systemctl enable jenkins</code></p>
+
+<p><code class="language-plaintext highlighter-rouge">systemctl status jenkins</code></p>
+
+<h3 id="nếu-có-semanage-thì-chạy-lệnh-ko-có-thì-thoai">Nếu có semanage thì chạy lệnh (Ko có thì thoai)</h3>
+<p><code class="language-plaintext highlighter-rouge">sudo semanage port -a -t http_port_t  -p tcp 8080</code></p>
+
+<h3 id="mở-port-của-firewall-jenkins-chạy-cổng-mặc-định-là-8080">Mở port của firewall (Jenkins chạy cổng mặc định là 8080)</h3>
+<p><code class="language-plaintext highlighter-rouge">firewall-cmd --permanent --zone=public --add-port=8080/tcp</code></p>
+
+<p><code class="language-plaintext highlighter-rouge">firewall-cmd --reload</code></p>
+
+<p><code class="language-plaintext highlighter-rouge">firewall-cmd --permanent --zone=public --list-ports</code></p>
+
+<h3 id="các-bước-cuối">Các bước cuối</h3>
+<ol>
+  <li>
+    <p>Truy cập <a href="http://localhost:8008">đường dẫn</a></p>
+  </li>
+  <li>
+    <p>Lấy default administrator password</p>
+
+    <p><code class="language-plaintext highlighter-rouge">cat /var/lib/jenkins/secrets/initialAdminPassword</code></p>
+  </li>
+  <li>
+    <p>Xong là ấn cài các kiểu trên WEB GUI</p>
+  </li>
+</ol>
+
+<h3 id="create-first-admin-user">Create First Admin User</h3>
+<p>admin/agalkjvlas</p>
+
+  </div><a class="u-url" href="/docs/linux/centos/jenkins/2022/07/20/install-jenkins.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Phanora</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Phanora</li><li><a class="u-email" href="mailto:nghiant9608@gmail.com">nghiant9608@gmail.com</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/NguyenNghia412"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">NguyenNghia412</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p></p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

@@ -2,7 +2,7 @@
 layout: post
 title:  "Cài nfs trên centos7"
 date:   2022-08-17
-categories: Khong biet
+categories: [Linux, CentOS, nfs]
 ---
 
 ## Setup nfs server
