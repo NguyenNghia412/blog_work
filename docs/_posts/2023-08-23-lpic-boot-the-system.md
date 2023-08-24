@@ -2,7 +2,7 @@
 layout: post
 title:  "Boot the system"
 date:   2023-08-23 23:08
-categories: [Linux, Kernel, Lpic]
+categories: [Linux, Kernel, Lpic, Boot]
 ---
 
 ## Quá trình boot
