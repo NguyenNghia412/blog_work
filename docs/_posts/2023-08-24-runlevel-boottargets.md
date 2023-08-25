@@ -52,7 +52,7 @@ Trong SysV, các stage (mode) được định nghĩa khác với Boot target.
 
 ## Shutdown system
 
-Linux thường được lựa chọn làm server cho nhiều loại dịch vụ khác nhau nên sẽ có nhiều user đang cùng tty vào 1 server. Khi Sys Admin muốn off server đi thì ko thể chạy lệnh `shutdown now` ngay được, mà nên thông báo với người dùng là 10 phút nữa server sẽ tắt, thế nó mới lịch sự.
+Linux thường được lựa chọn làm server cho nhiều loại dịch vụ khác nhau nên sẽ có nhiều user đang cùng tty vào 1 server. Khi Sys Admin muốn off server đi thì ko thể chạy lệnh `shutdown now` ngay được, mà nên thông báo với người dùng là 10 phút nữa server sẽ tắt, thế nó mới lịch sự. Trong 10p đó, server sẽ block hết các session của các user khác muốn đăng nhập vào server.
 
 Về các mode shutdown thì có 3 lệnh tương ứng như dưới đây. Thường trong các distro, các lệnh này thường là symbol link dẫn tới thư mục khác để execute
 
