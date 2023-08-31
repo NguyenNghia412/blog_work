@@ -4,6 +4,29 @@ title:  "Dùng powershell thao tác với MS Office Admin"
 date:   2023-08-29 09:57
 categories: [Powershell, MS, MS Office, MS Office Admin]
 ---
+Mở powershell với quyền **admin**.
+
+(*Nếu đang ở trong File Explorer, có thể ấn Alt + F => S => A*)
+
+## Sử dụng MS Graph module
+
+|`Install-Module Microsoft.Graph -Scope CurrentUser`|Cài **ms graph** module cho powershell|
+|`Connect-Graph -Scopes "User.ReadWrite.All"`|Connect **MsGraph** trên powershell|
+|`Connect-Graph -Scopes "User.Read","Application.Read.All"`||
+|`Connect-Graph -Scopes User.ReadWrite.All, Organization.Read.All`||
+|**Một vài license của Office 365 (SkuPartNumber)**|*(Tên của license khi show sẽ khác trên web. [Ấn vào đây để xem danh sách các license của Office 365](https://learn.microsoft.com/en-us/MicrosoftTeams/sku-reference-edu){:target="_blank"})*|
+|STANDARDWOFFPACK_STUDENT|Office 365 A1 for Students|
+|STANDARDWOFFPACK_FACULTY|Office 365 A1 for Faculty	|
+|**STANDARDWOFFPACK_IW_STUDENT**|Office 365 A1 **Plus** for Students|
+|**STANDARDWOFFPACK_IW_FACULTY**|Office 365 A1 **Plus** for Faculty|
+|`Get-MgUser -userid 'nghiant@example.com'`|Get user by username account bằng **MsGrpah**|
+|`Get-MgSubscribedSku -All | Where SkuPartNumber -eq 'STANDARDWOFFPACK_IW_STUDENT' | select skuid`|Get skuid của **license**|
+|`Set-MgUserLicense -UserId 'demo68@example.com' -AddLicenses @{SkuId = 'xxx-xxxx-xxxxxxxxx'} -RemoveLicenses @()`|Set **license**. [Chi tiết](https://learn.microsoft.com/en-us/powershell/module/microsoft.graph.users.actions/set-mguserlicense?view=graph-powershell-1.0){:target="_blank"}|
+|`New-MgUser -GivenName "Test k68" -Surname "Nguyen Van" -UserPrincipalName "demo168@example.com" -MailNickname "demo168" -DisplayName "Nguyen Van Test k68" -PasswordProfile @{ Password="xxxxx" } -AccountEnabled -JobTitle "Sinh viên" -City "Hanoi" -State "Hai Ba Trung" -PostalCode "10000" -Country "Vietnam" -UsageLocation "VN"`|Tạo **ms office user** bằng ms graph. [Chi tiết](https://learn.microsoft.com/en-us/powershell/module/microsoft.graph.users/new-mguser?view=graph-powershell-1.0){:target="_blank"}|
+|`Import-Csv -Path "E:\Doc\Huce\K68\K68-ms-test.csv" | foreach {New-MgUser -GivenName $_.Firstname -Surname $_.Lastname -UserPrincipalName $_.UserPrincipalName -MailNickname $_.MailNickname -DisplayName $_.DisplayName -PasswordProfile @{ Password=$_.Password } -OtherMails $_.Email -MobilePhone $_.Phone -AccountEnabled -JobTitle $_.Title -City $_.City -State $_.State -PostalCode $_.PostalCode -Country $_.Country -UsageLocation $_.UsageLocation} | Export-Csv -Path "E:\Doc\Huce\K68\logs\K68-ms-test.log"`|Tạo **user** từ file csv|
+|`Import-Csv -Path "E:\Doc\Huce\K68\K68-ms-test.csv" | foreach {Set-MgUserLicense -UserId $_.UserPrincipalName -AddLicenses @{SkuId = 'xxx-xxxx-xxxxxxxxx'} -RemoveLicenses @()} | Export-Csv -Path "E:\Doc\Huce\K68\logs\K68-ms-test.license.log"`|Set **license** theo file csv|
+
+## Các lệnh
 
 Mở powershell với quyền **admin**.
 
@@ -28,13 +51,9 @@ Mở powershell với quyền **admin**.
 |`Connect-Graph -Scopes "User.ReadWrite.All"`|Connect **MsGraph** trên powershell|
 |`Connect-Graph -Scopes "User.Read","Application.Read.All"`||
 |`Connect-Graph -Scopes User.ReadWrite.All, Organization.Read.All`||
-|`Get-MgUser -userid 'nghiant@huce.edu.vn'`|Get user by username account bằng **MsGrpah**|
+|`Get-MgUser -userid 'nghiant@example.com'`|Get user by username account bằng **MsGrpah**|
 |`Get-MgSubscribedSku -All | Where SkuPartNumber -eq 'STANDARDWOFFPACK_IW_STUDENT' | select skuid`|Get skuid của **license**|
 |`Set-MgUserLicense -UserId 'demo68@example.com' -AddLicenses @{SkuId = 'xxx-xxxx-xxxxxxxxx'} -RemoveLicenses @()`|Set **license**. [Chi tiết](https://learn.microsoft.com/en-us/powershell/module/microsoft.graph.users.actions/set-mguserlicense?view=graph-powershell-1.0){:target="_blank"}|
-|`New-MgUser -GivenName "Test k68" -Surname "Nguyen Van" -UserPrincipalName "demo168@example.com" -MailNickname "demo168" -DisplayName "Nguyen Van Test k68" -PasswordProfile @{ Password="xxxxx" } -AccountEnabled -JobTitle "Sinh viên" -City "Hanoi" -State "Hai Ba Trung" -PostalCode "10000" -Country "Vietnam" -UsageLocation "VN"`|Tạo ms office user bằng ms graph|
-|||
-|||
-|||
-|||
-|||
-|||
+|`New-MgUser -GivenName "Test k68" -Surname "Nguyen Van" -UserPrincipalName "demo168@example.com" -MailNickname "demo168" -DisplayName "Nguyen Van Test k68" -PasswordProfile @{ Password="xxxxx" } -AccountEnabled -JobTitle "Sinh viên" -City "Hanoi" -State "Hai Ba Trung" -PostalCode "10000" -Country "Vietnam" -UsageLocation "VN"`|Tạo ms office user bằng ms graph. [Chi tiết](https://learn.microsoft.com/en-us/powershell/module/microsoft.graph.users/new-mguser?view=graph-powershell-1.0){:target="_blank"}|
+|`Import-Csv -Path "E:\Doc\Huce\K68\K68-ms-test.csv" | foreach {New-MgUser -GivenName $_.Firstname -Surname $_.Lastname -UserPrincipalName $_.UserPrincipalName -MailNickname $_.MailNickname -DisplayName $_.DisplayName -PasswordProfile @{ Password=$_.Password } -OtherMails $_.Email -MobilePhone $_.Phone -AccountEnabled -JobTitle $_.Title -City $_.City -State $_.State -PostalCode $_.PostalCode -Country $_.Country -UsageLocation $_.UsageLocation} | Export-Csv -Path "E:\Doc\Huce\K68\logs\K68-ms-test.log"`|Tạo từ file csv|
+|`Import-Csv -Path "E:\Doc\Huce\K68\K68-ms-test.csv" | foreach {Set-MgUserLicense -UserId $_.UserPrincipalName -AddLicenses @{SkuId = 'xxx-xxxx-xxxxxxxxx'} -RemoveLicenses @()} | Export-Csv -Path "E:\Doc\Huce\K68\logs\K68-ms-test.license.log"`|Tạo từ file csv|
