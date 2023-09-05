@@ -26,6 +26,29 @@ Mở powershell với quyền **admin**.
 |`Import-Csv -Path "E:\Doc\Huce\K68\K68-ms-test.csv" | foreach {New-MgUser -GivenName $_.Firstname -Surname $_.Lastname -UserPrincipalName $_.UserPrincipalName -MailNickname $_.MailNickname -DisplayName $_.DisplayName -PasswordProfile @{ Password=$_.Password } -OtherMails $_.Email -MobilePhone $_.Phone -AccountEnabled -JobTitle $_.Title -City $_.City -State $_.State -PostalCode $_.PostalCode -Country $_.Country -UsageLocation $_.UsageLocation} | Export-Csv -Path "E:\Doc\Huce\K68\logs\K68-ms-test.log"`|Tạo **user** từ file csv|
 |`Import-Csv -Path "E:\Doc\Huce\K68\K68-ms-test.csv" | foreach {Set-MgUserLicense -UserId $_.UserPrincipalName -AddLicenses @{SkuId = 'xxx-xxxx-xxxxxxxxx'} -RemoveLicenses @()} | Export-Csv -Path "E:\Doc\Huce\K68\logs\K68-ms-test.license.log"`|Set **license** theo file csv|
 
+### Script tạo user từ file csv. Lỗi thì log vào file csv
+```
+$logError = "E:\Doc\Huce\K68\logs\K68-ms-test.error.csv"
+$logCsv = "E:\Doc\Huce\K68\logs\K68-ms-test.csv"
+
+Remove-Item $logError -Force
+Remove-Item $logCsv -Force
+
+Import-Csv -Path "E:\Doc\Huce\K68\K68-ms-test.csv" | ForEach-Object { 
+    $UserPrincipalName = $_.UserPrincipalName
+    try {
+        New-MgUser -GivenName $_.Firstname -Surname $_.Lastname -UserPrincipalName $_.UserPrincipalName -MailNickname $_.MailNickname -DisplayName $_.DisplayName -PasswordProfile @{ Password = $_.Password } -OtherMails $_.Email -MobilePhone $_.Phone -AccountEnabled -JobTitle $_.Title -City $_.City -State $_.State -PostalCode $_.PostalCode -Country $_.Country -UsageLocation $_.UsageLocation -ErrorAction Stop
+    }
+    catch {
+        $errorContent = [pscustomobject]@{
+            'Email' = $UserPrincipalName
+            'Error' = $Error[0].Exception.Message
+        }
+        $errorContent | Export-CSV $logError -Append -NoTypeInformation -Force
+    }
+} | Export-Csv -Path $logCsv
+```
+
 ## Các lệnh
 
 Mở powershell với quyền **admin**.
