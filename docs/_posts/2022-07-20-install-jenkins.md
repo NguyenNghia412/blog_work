@@ -6,6 +6,7 @@ categories: [Linux, Centos, Jenkins]
 ---
 ### Install jdk
 `yum install java-1.8.0-openjdk-devel`
+`yum install java-11-openjdk-devel`
 
 ### Enable repo jenkins
 `curl --silent --location http://pkg.jenkins-ci.org/redhat-stable/jenkins.repo | sudo tee /etc/yum.repos.d/jenkins.repo`
