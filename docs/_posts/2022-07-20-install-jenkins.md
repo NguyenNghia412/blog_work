@@ -6,7 +6,15 @@ categories: [Linux, Centos, Jenkins]
 ---
 ### Install jdk
 `yum install java-1.8.0-openjdk-devel`
+
 `yum install java-11-openjdk-devel`
+
+### Đổi version java (Nếu có nhiều version)
+`alternatives --config java`
+
+`alternatives --config javac`
+#### Đọc thêm
+[Đường dẫn](https://wiki.centos.org/HowTos(2f)JavaRuntimeEnvironment.html){:target="_blank"}
 
 ### Enable repo jenkins
 `curl --silent --location http://pkg.jenkins-ci.org/redhat-stable/jenkins.repo | sudo tee /etc/yum.repos.d/jenkins.repo`
@@ -36,7 +44,7 @@ categories: [Linux, Centos, Jenkins]
 `firewall-cmd --permanent --zone=public --list-ports`
 
 ### Các bước cuối
-1. Truy cập [đường dẫn](http://localhost:8008)
+1. Truy cập [đường dẫn](http://localhost:8008){:target="_blank"}
 
 1. Lấy default administrator password
 
