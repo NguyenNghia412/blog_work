@@ -4,10 +4,17 @@ title:  "Cài jenkins trên centos7"
 date:   2022-07-20
 categories: [Linux, Centos, Jenkins]
 ---
+### Lưu ý 2024, jenkins mới ko support OS RHEL 7, CentOS 7 nữa. Nên cài bản cao hơn
+
 ### Install jdk
 `yum install java-1.8.0-openjdk-devel`
 
 `yum install java-11-openjdk-devel`
+
+`yum install -y java-17-openjdk` => 2024, jenkins dùng java 11, java 17 hoặc hơn
+
+### Check java version
+`java -version`
 
 ### Đổi version java (Nếu có nhiều version)
 `alternatives --config java`
@@ -20,9 +27,9 @@ categories: [Linux, Centos, Jenkins]
 `curl --silent --location http://pkg.jenkins-ci.org/redhat-stable/jenkins.repo | sudo tee /etc/yum.repos.d/jenkins.repo`
 
 ### Add repo to sytem
-`rpm --import https://jenkins-ci.org/redhat/jenkins-ci.org.key => Ver cũ`
+`rpm --import https://jenkins-ci.org/redhat/jenkins-ci.org.key` => Ver cũ
 
-`sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key => 2023`
+`sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key`  => 2023
 
 ### Install latest stable version
 `yum install jenkins -y`
