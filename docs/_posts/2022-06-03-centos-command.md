@@ -4,7 +4,16 @@ title:  "Một vài lệnh linux trên centos7"
 date:   2022-06-03
 categories: [Linux, Centos]
 ---
-## Tim thu muc khi biet ten file
+## Fix lỗi yum update CentOS-8 – AppStream Failed to download metadata for repo ‘AppStream’ [CentOS]
+`cd /etc/yum.repos.d/`
+
+`sed -i 's/mirrorlist/#mirrorlist/g' /etc/yum.repos.d/CentOS-*`
+
+`sed -i 's|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g' /etc/yum.repos.d/CentOS-*`
+
+`yum update -y`
+
+## Tìm thư mục khi biết tên file
 find / -name <ten-file>
 find / -name deploy.sh
 ## Remove all <none> images
