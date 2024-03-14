@@ -19,7 +19,7 @@ Appreciate for any advices. Thank you."
 ![](/{{ site.baseurl }}/assets/images/annotation-2020-08-04-202924.png)
 
 ### Cách sửa
-Resolved by following steps (only IT Admin can resolve this)
+Làm theo các bước sau (Chỉ tài khoản có quyền admin mới thực hiện được)
 Go to [Azure portal](https://portal.azure.com/){:target="_blank"} -> dashboard -> username -> device -> enable/disable
 
 ![](/{{ site.baseurl }}/assets/images/azure-device-enable1.jpg)
