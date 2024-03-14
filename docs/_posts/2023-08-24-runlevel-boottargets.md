@@ -12,7 +12,7 @@ Khi boot system lên, nó sẽ được trải qua các *mode single user (root)
 User có thể switch qua lại giữa các mode hoặc vào mỗi mode này độc lập nếu mode cho phép **Isolate**. Tức là ví dụ có thể chỉ vào riêng mode **emergency**, lúc đấy sẽ không còn network hay đồ họa nữa.
 
 Ví dụ như hình dưới đây, unit này **cho phép isolate**:
-![](/assets/images/runlevel-boottargets/graphical-target.png)
+![]({{ site.baseurl }}/assets/images/runlevel-boottargets/graphical-target.png)
 
 ## Boot target (Systemd)
 Một vài lệnh
@@ -23,7 +23,7 @@ Một vài lệnh
 |systemctl isolate rescue|Vào target nào đó với chế độ isolate|
 
 ### Minh họa cấu hình của 1 target (*graphical*)
-![](/assets/images/runlevel-boottargets/minhhoa-target.png)
+![]({{ site.baseurl }}/assets/images/runlevel-boottargets/minhhoa-target.png)
 
 ## SysV
 Trong SysV, các stage (mode) được định nghĩa khác với Boot target.
@@ -56,7 +56,7 @@ Linux thường được lựa chọn làm server cho nhiều loại dịch vụ
 
 Về các mode shutdown thì có 3 lệnh tương ứng như dưới đây. Thường trong các distro, các lệnh này thường là symbol link dẫn tới thư mục khác để execute
 
-![](/assets/images/runlevel-boottargets/halt-sl.png)
+![]({{ site.baseurl }}/assets/images/runlevel-boottargets/halt-sl.png)
 
 |halt|Ngưng hoạt động system|
 |poweroff|Ngưng giống `halt` và tắt máy|
@@ -77,7 +77,7 @@ Có thể dùng `shutdown` theo nhiều cách để halt/off/reboot system. Xem 
 |vi /etc/motd|Nội dung trong file này sẽ được show ra mỗi khi có user login tty vào system|
 
 Broadcast message nó trông như thế này
-![](/assets/images/runlevel-boottargets/broadcast.png)
+![]({{ site.baseurl }}/assets/images/runlevel-boottargets/broadcast.png)
 
 Sau khi sửa nội dung trong /etc/motd, user login tty vào thì màn hình sẽ trông như thế này
-![](/assets/images/runlevel-boottargets/motd.png)
+![]({{ site.baseurl }}/assets/images/runlevel-boottargets/motd.png)

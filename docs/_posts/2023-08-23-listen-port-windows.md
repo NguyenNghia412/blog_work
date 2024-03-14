@@ -10,5 +10,5 @@ categories: [Windows, network, service]
 2. Gõ Resource Monitor
 3. Vào tab Network
 
-![](/assets/images/listen-port-windows/res-monitor.png)
+![]({{ site.baseurl }}/assets/images/listen-port-windows/res-monitor.png)
 
