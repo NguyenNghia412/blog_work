@@ -22,7 +22,7 @@ title: BlogW
 email: nghiant9608@gmail.com
 # baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://nguyennghia412.github.io/" # the base hostname & protocol for your site, e.g. http://example.com
-baseurl: "blog_work"
+baseurl: "/blog_work"
 github_username:  NguyenNghia412
 
 # Build settings

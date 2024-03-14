@@ -16,14 +16,14 @@ Appreciate for any advices. Thank you."
 
 "Chào thầy/cô, việc là em vô hiệu hóa nhầm thiết bị, nhưng em không phải người quản trị, mong thầy giúp em kích hoạt lại thiết bị tài khoản Microsoft Teams"
 
-![](/{{ site.baseurl }}/assets/images/annotation-2020-08-04-202924.png)
+![]({{ site.baseurl }}/assets/images/annotation-2020-08-04-202924.png)
 
 ### Cách sửa
 Làm theo các bước sau (Chỉ tài khoản có quyền admin mới thực hiện được)
 Go to [Azure portal](https://portal.azure.com/){:target="_blank"} -> dashboard -> username -> device -> enable/disable
 
-![](/{{ site.baseurl }}/assets/images/azure-device-enable1.jpg)
-![](/{{ site.baseurl }}/assets/images/azure-device-enable1.jpg)
+![]({{ site.baseurl }}/assets/images/azure-device-enable1.jpg)
+![]({{ site.baseurl }}/assets/images/azure-device-enable1.jpg)
 
 
 ### Link tham khảo
