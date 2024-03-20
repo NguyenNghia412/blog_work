@@ -14,7 +14,7 @@ Appreciate for any advices. Thank you."
 
 <ins>User2 nói:<ins>
 
-"Chào thầy/cô, việc là em vô hiệu hóa nhầm thiết bị, nhưng em không phải người quản trị, mong thầy giúp em kích hoạt lại thiết bị tài khoản Microsoft Teams"
+"Chào admin, việc là em vô hiệu hóa nhầm thiết bị, nhưng em không phải người quản trị, mong thầy giúp em kích hoạt lại thiết bị tài khoản Microsoft Teams"
 
 ![]({{ site.baseurl }}/assets/images/annotation-2020-08-04-202924.png)
 
