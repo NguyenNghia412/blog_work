@@ -22,3 +22,13 @@ Nếu server B yêu cầu tài khoản:
 Chạy câu này sẽ list ra các link tới db từ server A:
 
 `EXEC sp_helpserver`
+
+Trong sp hoặc query thì thêm IP đằng trước db.table:
+
+`SELECT table1.*
+FROM table1
+INNER JOIN [secondserver].[database].[schema].[table] AS table2 ON
+    table1.joinfield = table2.joinfield`
+
+#### Link tham khảo
+[Ấn vào đây](https://stackoverflow.com/questions/8752477/joining-tables-from-different-servers){:target="_blank"}
