@@ -22,3 +22,10 @@ Chạy lệnh sau:
 Restart lại jenkins service:
 
 `systemctl restart jenkins`
+
+### Nếu ko chạy được docker từ jenkins thì
+
+`sudo usermod -aG docker jenkins`
+
+`systemctl restart jenkins`
+
