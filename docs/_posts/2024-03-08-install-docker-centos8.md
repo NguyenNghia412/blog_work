@@ -7,15 +7,15 @@ categories: [Linux, Centos, Docker, Centos8]
 ### Docker engine
 `yum install -y yum-utils`
 
-` sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo`
+`sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo`
 
-` sudo yum install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin`
+`sudo yum install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin`
 
-` sudo systemctl start docker`
+`sudo systemctl start docker`
 
-` sudo systemctl status docker`
+`sudo systemctl status docker`
 
-` sudo systemctl enable docker`
+`sudo systemctl enable docker`
 
 `docker --version`
 
