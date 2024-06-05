@@ -104,6 +104,42 @@ WantedBy=multi-user.target
 
 - Link tham khảo:
 
-[https://www.linode.com/docs/guides/start-service-at-boot/](https://www.linode.com/docs/guides/start-service-at-boot/){:target="_blank"}.
+[Execute file dưới dạng system service](https://www.linode.com/docs/guides/start-service-at-boot/){:target="_blank"}.
 
-[https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-installation-configuration.html](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-installation-configuration.html){:target="_blank"}
+[Hướng dẫn cài filebeat trên linux](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-installation-configuration.html){:target="_blank"}
+
+### Windows
+- Tải filebeat
+
+[Ấn vào đây để download](https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-8.13.4-windows-x86_64.zip){:target="_blank"}.
+
+- Giải nén vào **C:\Program Files**
+
+- Đổi tên thư mục giải nén thành **Filebeat**
+
+- Mở **Powershell** quyền **Administrator**
+
+```
+PS > cd 'C:\Program Files\Filebeat'
+PS C:\Program Files\Filebeat> .\install-service-filebeat.ps1
+```
+
+- Test config
+
+```
+PS C:\Program Files\Filebeat> .\filebeat.exe -e test config
+```
+
+- Chạy service
+
+`PS > Start-Service filebeat`
+
+- Muốn dừng thì
+
+`Stop-Service filebeat`
+
+- Link tham khảo:
+
+[Hướng dẫn cài filebeat trên windows](https://stackoverflow.com/questions/41751605/running-filebeat-in-windows){:target="_blank"}.
+
+[Hướng dẫn cài filebeat trên windows (trang chủ elk)](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-installation-configuration.html){:target="_blank"}.
