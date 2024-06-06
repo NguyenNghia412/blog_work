@@ -27,3 +27,4 @@ categories: [Linux, Centos, Docker, Centos8]
 `chmod +x /usr/local/bin/docker-compose`
 
 `docker-compose version`
+

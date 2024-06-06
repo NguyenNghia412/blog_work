@@ -22,7 +22,7 @@ Cài ELK bằng docker cho nhanh. Thu thập file log từ các service thì dù
 
 - Chỉnh cấu hình: Mật khẩu elastic, kibana, logstash, version trong .env
 
-|Port|Service|
+|**Port**|**Service**|
 |9200|Elastic|
 |9300|Elastic|
 |5601|Kibana|
