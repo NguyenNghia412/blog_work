@@ -145,9 +145,8 @@ PS C:\Program Files\Filebeat> .\filebeat.exe -e test config
 [Hướng dẫn cài filebeat trên windows (trang chủ elk)](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-installation-configuration.html){:target="_blank"}.
 
 ## Cài filebeat
-### Linux
 
-- Làm tương tự với filebeat. Chỉ khác file cấu hình metricbeat.yml. Mặc định có module system (cpu, ram, disk) đã enable sẵn.
+- Cả linux và windows đều làm tương tự như cài filebeat. Chỉ khác file cấu hình metricbeat.yml. Mặc định có module system (cpu, ram, disk) đã enable sẵn.
 
 - File cấu hình
 
