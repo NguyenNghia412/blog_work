@@ -144,7 +144,29 @@ PS C:\Program Files\Filebeat> .\filebeat.exe -e test config
 
 [Hướng dẫn cài filebeat trên windows (trang chủ elk)](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-installation-configuration.html){:target="_blank"}.
 
-## Cài filebeat
+## Cài metricbeat
+
+- Với password thì có thể sử dụng metricbeat keystore
+
+```
+metricbeat keystore create
+
+metricbeat keystore add ES_PWD
+
+metricbeat keystore add ES_PWD --force
+
+cat /file/containing/setting/value | metricbeat keystore add ES_PWD --stdin --force
+
+metricbeat keystore list
+
+metricbeat keystore remove ES_PWD
+```
+
+- Cách dùng
+
+In the configuration file, use `output.elasticsearch.password: "${ES_PWD}"`
+
+On the command line, use: `-E "output.elasticsearch.password=\${ES_PWD}"`
 
 - Cả linux và windows đều làm tương tự như cài filebeat. Chỉ khác file cấu hình metricbeat.yml. Mặc định có module system (cpu, ram, disk) đã enable sẵn.
 
