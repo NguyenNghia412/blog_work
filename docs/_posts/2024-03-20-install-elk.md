@@ -372,3 +372,7 @@ processors:
 - Link tham khảo:
 
 [Hướng dẫn cài metricbeat](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-installation-configuration.html){:target="_blank"}.
+
+## Cài winlogbeat
+
+[Hướng dẫn cài winlogbeat](https://www.elastic.co/guide/en/beats/winlogbeat/current/winlogbeat-installation-configuration.html#installation){:target="_blank"}.
