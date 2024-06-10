@@ -134,6 +134,8 @@ PS C:\Program Files\Filebeat> .\filebeat.exe -e test config
 
 `PS > Start-Service filebeat`
 
+`PS > Get-Service filebeat`
+
 - Muốn dừng thì
 
 `Stop-Service filebeat`
