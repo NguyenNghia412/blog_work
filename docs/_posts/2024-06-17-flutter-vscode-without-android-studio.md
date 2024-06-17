@@ -24,3 +24,10 @@ categories: [Flutter, VSCode, VSC, Command line]
 
 - List máy ảo
 `avdmanager list`
+
+## Lệnh chạy
+
+```
+flutter emulators --launch Pixel
+flutter run
+```
