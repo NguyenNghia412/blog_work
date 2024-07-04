@@ -11,10 +11,10 @@ categories: [Sql Script, SQL Server, Powershell, CMD]
 [System.Reflection.Assembly]::LoadWithPartialName("Microsoft.SqlServer.Smo") | Out-Null
 
 # Define the server name and credentials
-$serverName = "192.168.3.7"
-$login = "sa"
-$password = "Nuce@1234"
-$dbname = "HUCE-HT"
+$serverName = "xxxx"
+$login = "xx"
+$password = "xxxx"
+$dbname = "xxxx"
 $filePath = "E:\$dbname.sql"
 
 # Create a ServerConnection object
