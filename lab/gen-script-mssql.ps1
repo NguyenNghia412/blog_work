@@ -1,20 +1,3 @@
----
-layout: post
-title:  "Chạy sql script bằng cli"
-date:   2024-07-04
-categories: [Sql Script, SQL Server, Powershell, CMD]
----
-## Sử dụng
-
-- Powershell
-- Microsoft.SqlServer.Smo
-- Microsoft.SqlServer.Management.Smo.Server
-- Microsoft.SqlServer.Management.Smo.Scripter
-- Microsoft.SqlServer.Management.Common.ServerConnection
-- Microsoft.SqlServer.Management.SMO.ScriptingOptions
-
-## Scripts
-```
 # Load the SMO assembly
 [System.Reflection.Assembly]::LoadWithPartialName("Microsoft.SqlServer.Smo") | Out-Null
 
@@ -90,6 +73,3 @@ foreach($tbl in $listTables) {
 
 Write-Output("DONE")
 
-
-
-```
