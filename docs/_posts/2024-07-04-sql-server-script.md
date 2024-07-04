@@ -15,7 +15,9 @@ categories: [Sql Script, SQL Server, Powershell, CMD]
 
 ## Lệnh chạy
 
-Mở powershell. Chạy lệnh
+- Thay các biến Servername, login, password, dbname, filePath, listTables
+
+- Mở powershell. Chạy lệnh
 `gen-script-mssql.ps1`
 
 ## Nội dung scripts
@@ -29,7 +31,7 @@ $login = "xx" # User
 $password = "xxxxxxxx" # Password
 $dbname = "xxxxxxxxx" # Database
 $filePath = "E:\$dbname-$((Get-Date).ToString('ddMMyyyy_HHmm')).sql" # Đường dẫn lưu file script sql
-$listTables = @("Users") # List bảng muốn xuất script
+$listTables = @("Users", "Test") # List bảng muốn xuất script
 
 # Create a ServerConnection object
 $serverConnection = New-Object Microsoft.SqlServer.Management.Common.ServerConnection
