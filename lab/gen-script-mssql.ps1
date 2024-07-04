@@ -1,3 +1,6 @@
+# Mở powershell: chạy lệnh
+# gen-script-mssql.ps1
+
 # Load the SMO assembly
 [System.Reflection.Assembly]::LoadWithPartialName("Microsoft.SqlServer.Smo") | Out-Null
 

@@ -13,7 +13,12 @@ categories: [Sql Script, SQL Server, Powershell, CMD]
 - Microsoft.SqlServer.Management.Common.ServerConnection
 - Microsoft.SqlServer.Management.SMO.ScriptingOptions
 
-## Scripts
+## Lệnh chạy
+
+Mở powershell. Chạy lệnh
+`gen-script-mssql.ps1`
+
+## Nội dung scripts
 ```
 # Load the SMO assembly
 [System.Reflection.Assembly]::LoadWithPartialName("Microsoft.SqlServer.Smo") | Out-Null
