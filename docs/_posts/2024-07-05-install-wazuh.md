@@ -33,6 +33,8 @@ categories: [Wazuh, CentOS, Filebeat]
 
 ```
 firewall-cmd --permanent --zone=public --add-port=443/tcp
+firewall-cmd --permanent --zone=public --add-port=1514/tcp
+firewall-cmd --permanent --zone=public --add-port=1515/tcp
 firewall-cmd --reload
 firewall-cmd --permanent --zone=public --list-ports
 ```
