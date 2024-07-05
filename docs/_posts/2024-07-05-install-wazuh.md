@@ -36,3 +36,10 @@ firewall-cmd --permanent --zone=public --add-port=443/tcp
 firewall-cmd --reload
 firewall-cmd --permanent --zone=public --list-ports
 ```
+
+## Tài khoản / Mật khẩu mặc định
+
+Tài khoản này dùng cho cả **Indexer**, **Server** và **Dashboard**
+
+**username**: admin
+**password**: admin
