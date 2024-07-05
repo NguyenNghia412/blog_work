@@ -27,3 +27,12 @@ categories: [Wazuh, CentOS, Filebeat]
 | Wazuh indexer   | 9200           | TCP                                            | Wazuh indexer RESTful API |
 | 9300-9400       | TCP            | Wazuh indexer cluster communication            |
 | Wazuh dashboard | 443            | TCP                                            | Wazuh web user interface  |
+
+
+## Mở port cho Wazuh dashboard interface
+
+```
+firewall-cmd --permanent --zone=public --add-port=443/tcp
+firewall-cmd --reload
+firewall-cmd --permanent --zone=public --list-ports
+```
