@@ -7,6 +7,8 @@ categories: [CentOS 7, CentOS, Docker, Container, Arial, Fonts]
 
 ## Tham khảo
 
+- [HD cài font arial cho CentOS 7](https://superuser.com/questions/1153990/anyone-know-how-to-install-arial-fonts-on-centos-7){:target="_blank"}.
+
 ## Nguyên nhân sâu xa
 
 Dockerize project c# .net 8 lên server CentOS 7. Project chạy API và có sử dụng lib cần tới font Arial.
