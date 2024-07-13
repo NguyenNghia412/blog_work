@@ -30,3 +30,15 @@ gitlab-runner ALL=(ALL:ALL) NOPASSWD: /bin/chmod 755 -R /projects/shoeshop*
 gitlab-runner ALL=(ALL:ALL) NOPASSWD: /bin/ps aux*
 gitlab-runner ALL=(ALL:ALL) NOPASSWD: /bin/kill -9*
 ```
+
+## alpine
+
+```
+# Create a group and user
+RUN addgroup -S appgroup && adduser -S appuser -G appgroup
+
+# Tell docker that all future commands should run as the appuser user
+USER appuser
+```
+
+![]({{ site.baseurl }}/assets/images/docker_1.png)
