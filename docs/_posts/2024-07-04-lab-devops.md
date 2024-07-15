@@ -42,3 +42,22 @@ USER appuser
 ```
 
 ![]({{ site.baseurl }}/assets/images/docker_1.png)
+
+## Dockerfile vue
+
+```
+# stage build
+FROM node:20.15.1-slim AS build
+
+WORKDIR /app
+COPY . .
+RUN npm i
+RUN npm run build
+
+# stage run
+FROM nginx:stable-alpine3.19-slim AS run
+COPY --from=build /app/dist/ /usr/share/nginx/html
+
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
+```
