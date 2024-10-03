@@ -122,3 +122,38 @@ Connect psql -h <ip> -U <username> <db>
 `psql -h localhost -U nghiant demo`
 
 ## Cài jenkins
+
+1. Install
+
+Add repo
+
+`wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key |sudo gpg --dearmor -o /usr/share/keyrings/jenkins.gpg`
+
+Next, let’s append the Debian package repository address to the server’s sources.list:
+
+`sudo sh -c 'echo deb [signed-by=/usr/share/keyrings/jenkins.gpg] http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'`
+
+After both commands have been entered, run apt update so that apt will use the new repository.
+
+`sudo apt update`
+
+`sudo apt install jenkins`
+
+2. Start
+
+```
+sudo systemctl start jenkins
+sudo systemctl status jenkins
+```
+
+Firewall:
+
+```
+sudo ufw allow 8080
+sudo ufw enable
+sudo ufw status
+```
+
+Copy mật khẩu ban đầu
+
+`sudo cat /var/lib/jenkins/secrets/initialAdminPassword`
