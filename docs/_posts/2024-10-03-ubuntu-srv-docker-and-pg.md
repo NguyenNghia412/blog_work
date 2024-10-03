@@ -123,6 +123,28 @@ Connect psql -h <ip> -U <username> <db>
 
 `psql -h localhost -U nghiant demo`
 
+### Open port 5432
+
+a. Edit postgresql.conf
+
+`vi /etc/postgresql/14/main/postgresql.conf`
+
+Look for the listen_addresses setting and update it to allow connections from all IP addresses (*), or specify a particular IP range if needed:
+
+`listen_addresses = '*'`
+
+b. Edit pg_hba.conf
+
+`vi /etc/postgresql/14/main/pg_hba.conf`
+
+Add a line at the end of the file to allow connections from a specific IP range (or all IPs using 0.0.0.0/0):
+
+`host    all             all             192.168.1.0/24       md5`
+
+c. Restart PostgreSQL
+
+`sudo systemctl restart postgresql`
+
 ## Cài jenkins
 
 1. Update your system
