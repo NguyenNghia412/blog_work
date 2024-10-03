@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Ubuntu"
+title: "Cài đặt server dev (PSQL + Docker) cho Ubuntu Server 22 04"
 date:   2024-10-03
 categories: [Linux, Ubuntu, PostgreSQL, Docker]
 ---
@@ -112,5 +112,13 @@ CREATE DATABASE your_database_name OWNER your_username;
 If you want to grant the new user full privileges on the database, use:
 
 `GRANT ALL PRIVILEGES ON DATABASE your_database_name TO your_username;`
+
+6. Switch user. Connect psql
+
+`sudo -u postgres psql`
+
+Connect psql -h <ip> -U <username> <db>
+
+`psql -h localhost -U nghiant demo`
 
 ## Cài jenkins
