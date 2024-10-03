@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Cài đặt server dev (PSQL + Docker) cho Ubuntu Server 22 04"
+title: "Cài đặt server dev (PSQL + Docker) cho Ubuntu Server 22 04 (Năm 2024)"
 date:   2024-10-03
 categories: [Linux, Ubuntu, PostgreSQL, Docker]
 ---
@@ -8,6 +8,8 @@ categories: [Linux, Ubuntu, PostgreSQL, Docker]
 ## Server
 
 Ubuntu 22.04.4 LTS
+
+Năm 2024
 
 ## Đặt ip static
 
@@ -123,37 +125,58 @@ Connect psql -h <ip> -U <username> <db>
 
 ## Cài jenkins
 
-1. Install
-
-Add repo
-
-`wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key |sudo gpg --dearmor -o /usr/share/keyrings/jenkins.gpg`
-
-Next, let’s append the Debian package repository address to the server’s sources.list:
-
-`sudo sh -c 'echo deb [signed-by=/usr/share/keyrings/jenkins.gpg] http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'`
-
-After both commands have been entered, run apt update so that apt will use the new repository.
-
-`sudo apt update`
-
-`sudo apt install jenkins`
-
-2. Start
+1. Update your system
 
 ```
+sudo apt update
+sudo apt upgrade -y
+```
+
+2. Install Java
+
+```
+sudo apt install openjdk-17-jdk -y
+java -version
+```
+
+Chọn version nếu cần
+
+`sudo update-alternatives --config java`
+
+3. Add Jenkins Repository
+
+You need to add the Jenkins repository to your system. First, import the GPG key:
+
+```
+curl -fsSL https://pkg.jenkins.io/debian/jenkins.io-2023.key | sudo tee \
+  /usr/share/keyrings/jenkins-keyring.asc > /dev/null
+```
+
+Then, add the Jenkins package repository:
+
+```
+echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
+  https://pkg.jenkins.io/debian binary/ | sudo tee \
+  /etc/apt/sources.list.d/jenkins.list > /dev/null
+```
+
+4. Install Jenkins
+
+```
+sudo apt update
+sudo apt install jenkins -y
 sudo systemctl start jenkins
-sudo systemctl status jenkins
+sudo systemctl enable jenkins
 ```
 
-Firewall:
+5. Adjust Firewall (if necessary)
 
 ```
 sudo ufw allow 8080
-sudo ufw enable
 sudo ufw status
+http://your_server_ip_or_domain:8080
 ```
 
-Copy mật khẩu ban đầu
+6. Copy password
 
 `sudo cat /var/lib/jenkins/secrets/initialAdminPassword`
