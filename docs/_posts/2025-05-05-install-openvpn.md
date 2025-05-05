@@ -5,10 +5,11 @@ date:   2025-05-05
 categories: [Linux, Ubuntu, OpenVPN, vpn]
 ---
 
-## Tham khảo
+## Các loại link
 
 - [Hướng dẫn cài OpenVPN từ trang chủ Ubuntu](https://documentation.ubuntu.com/server/how-to/security/install-openvpn/index.html){:target="_blank"}.
 - [Hướng dẫn tạo file opvn cho client để kết nối đến VPN Server](https://serverfault.com/questions/483941/generate-an-openvpn-profile-for-client-user-to-import){:target="_blank"}.
+- [Link tải Open VPN Connect cho Windows](https://openvpn.net/client/){:target="_blank"}.
 
 ## Install the server (Cài thư viện cần thiết)
 
