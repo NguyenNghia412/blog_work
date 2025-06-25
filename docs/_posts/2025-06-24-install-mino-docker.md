@@ -5,6 +5,12 @@ date:   2025-06-24
 categories: [Linux, Ubuntu, Docker, Minio, S3]
 ---
 
+## Lưu ý
+
+- Tháng 6/2025: Minio cập nhật bản community: Bỏ hết các chức năng ngoài trừ (bucket) trên Web GUI. Cli ko ảnh hưởng
+
+=> Tìm image docker có tag version nhỏ hơn tháng 6/25 để có đủ chức năng như GUI.
+
 ## Môi trường
 
 - OS: Ubuntu 24.04.2 LTS
@@ -17,7 +23,7 @@ categories: [Linux, Ubuntu, Docker, Minio, S3]
 version: '3.8'
 services:
   minio:
-    image: minio/minio
+    image: minio/minio:RELEASE.2025-02-28T09-55-16Z
     container_name: 'minio'
     ports:
       - '9000:9000'
