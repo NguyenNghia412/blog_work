@@ -62,9 +62,9 @@ services:
 
 ### Cấu hình kết nối (vd link server minio: https://s3-2.huce.edu.vn:9000)
 
-1. Login vào link minio server, tạo bucket (nếu chưa có), tạo cặp **access key** và **secret key** rồi lưu lại.
+- Login vào link minio server, tạo bucket (nếu chưa có), tạo cặp **access key** và **secret key** rồi lưu lại.
 
-2. Cấu hình profile connection của cyberduck
+- Cấu hình profile connection của cyberduck
 
 - [Vào đây copy cấu hình **S3 (Deprecated path style requests) profile**](https://profiles.cyberduck.io/S3%20(Deprecated%20path%20style%20requests).cyberduckprofile){:target="_blank"}
 
@@ -102,8 +102,6 @@ hoặc copy cấu hình bên dưới
 ![]({{ site.baseurl }}/assets/images/install-minio-docker/1.png)
 
 - Restart lại cyberduck nếu đang bật
-
-3. Kết nối trên Cyberduck
 
 - Ấn **Open Connection** => Chọn **S3 (Deprecated path style requests)** => Nhập **server name**, **port** (thường là 9000) => Nhập **access key** và **secret key** vừa tạo => Ấn **Connect**
 
