@@ -99,7 +99,7 @@ hoặc copy cấu hình bên dưới
 
 - Truy cập thư mục `%APPDATA%\Cyberduck\Profiles` vào đó rồi lưu file với tên `S3 (HTTPS).cyberduckprofile`
 
-![]({{ site.baseurl }}/assets/install-minio-docker/1.png)
+![]({{ site.baseurl }}/assets/images/install-minio-docker/1.png)
 
 - Restart lại cyberduck nếu đang bật
 
@@ -107,10 +107,10 @@ hoặc copy cấu hình bên dưới
 
 - Ấn **Open Connection** => Chọn **S3 (Deprecated path style requests)** => Nhập **server name**, **port** (thường là 9000) => Nhập **access key** và **secret key** vừa tạo => Ấn **Connect**
 
-![]({{ site.baseurl }}/assets/install-minio-docker/2.png)
+![]({{ site.baseurl }}/assets/images/install-minio-docker/2.png)
 
-![]({{ site.baseurl }}/assets/install-minio-docker/3.png)
+![]({{ site.baseurl }}/assets/images/install-minio-docker/3.png)
 
 - Kết nối xong sẽ hiện ra bucket. Ấn vào bucket thấy nội dung như file, folder hiện lên được là xong. Có thể upload,...
 
-![]({{ site.baseurl }}/assets/install-minio-docker/4.png)
+![]({{ site.baseurl }}/assets/images/install-minio-docker/4.png)
