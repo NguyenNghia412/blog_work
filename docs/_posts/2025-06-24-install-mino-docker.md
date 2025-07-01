@@ -11,7 +11,7 @@ categories: [Linux, Ubuntu, Docker, Minio, S3, Cyberduck]
 
 - Tháng 6/2025: Minio cập nhật bản community: Bỏ hết các chức năng ngoài trừ (bucket) trên Web GUI. Cli ko ảnh hưởng
 
-=> Tìm image docker có tag version nhỏ hơn tháng 6/25 để có đủ chức năng như GUI.
+=> Tìm image docker có tag version nhỏ hơn tháng 6/25 để có đủ chức năng trên GUI.
 
 ### Môi trường
 
@@ -26,10 +26,11 @@ version: '3.8'
 services:
   minio:
     image: minio/minio:RELEASE.2025-02-28T09-55-16Z
+    restart: unless-stopped <= start ngay khi server bật lên
     container_name: 'minio'
     ports:
-      - '9000:9000'
-      - '9001:9001'
+      - '9000:9000' <= port S3 API
+      - '9001:9001' <= port WEB GUI CONSOLE
     environment:
       MINIO_ROOT_USER: [USERNAME]
       MINIO_ROOT_PASSWORD: [PASSWORD]
