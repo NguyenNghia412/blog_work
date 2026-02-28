@@ -148,3 +148,20 @@ key-direction 1
 -----END OpenVPN Static key V1-----
 </tls-auth>
 ```
+
+## Troubleshoot
+
+Live logs (real-time)
+
+`sudo journalctl -u openvpn@server -f`
+
+🔹 Show recent logs (today)
+
+`sudo journalctl -u openvpn@server --since today`
+
+🔹 Last 100 lines
+
+`sudo journalctl -u openvpn@server -n 100`
+
+`journalctl -u openvpn@server -p err`
+
